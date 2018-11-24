@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mListView;
     ArrayList<ContactPerson>persons;
     private ContactPerson contactPerson;
+    private PersonAdapter personAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +21,8 @@ public class MainActivity extends AppCompatActivity {
         mListView = findViewById(R.id.myLisView);
         contactPerson = new ContactPerson();
         persons = contactPerson.getAllPerson();
+
+        personAdapter = new PersonAdapter(this, persons);
+        mListView.setAdapter(personAdapter);
     }
 }
