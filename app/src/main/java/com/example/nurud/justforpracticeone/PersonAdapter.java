@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,19 +23,37 @@ public class PersonAdapter extends ArrayAdapter<ContactPerson> {
         this.persons = persons;
     }
 
+
+    class ViewHolder{
+        TextView nameTV;
+        TextView phoneTV;
+        ImageView myImage;
+
+    }
+
     @NonNull
     @Override
     public View getView(int position,  @Nullable View convertView,  ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        convertView = inflater.inflate(R.layout.row_layout, parent, false);
+        ViewHolder viewHolder;
 
-        TextView nameTV = convertView.findViewById(R.id.myName);
-        TextView phoneTV = convertView.findViewById(R.id.myPhone);
-        TextView myImge = convertView.findViewById(R.id.myImage);
+        if (convertView == null){
 
-        nameTV.setText(persons.get(position).getPersonName());
-        phoneTV.setText(persons.get(position).getPhoneNumber());
+            viewHolder = new ViewHolder();
+            convertView = inflater.inflate(R.layout.row_layout, parent, false);
+
+            viewHolder.nameTV = convertView.findViewById(R.id.myName);
+            viewHolder.phoneTV = convertView.findViewById(R.id.myPhone);
+            viewHolder.myImage = convertView.findViewById(R.id.myImage);
+
+            convertView.setTag(viewHolder);
+        }else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        viewHolder.nameTV.setText(persons.get(position).getPersonName());
+        viewHolder.phoneTV.setText(persons.get(position).getPhoneNumber());
 
         return convertView;
     }

@@ -1,8 +1,9 @@
 package com.example.nurud.justforpracticeone;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ContactPerson {
+public class ContactPerson implements Serializable {
 
     private String personName;
     private String phoneNumber;
