@@ -43,6 +43,7 @@ public class PersonAdapter extends ArrayAdapter<ContactPerson> {
             viewHolder = new ViewHolder();
             convertView = inflater.inflate(R.layout.row_layout, parent, false);
 
+            
             viewHolder.nameTV = convertView.findViewById(R.id.myName);
             viewHolder.phoneTV = convertView.findViewById(R.id.myPhone);
             viewHolder.myImage = convertView.findViewById(R.id.myImage);
